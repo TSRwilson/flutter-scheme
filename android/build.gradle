@@ -17,6 +17,17 @@ rootProject.allprojects {
         google()
         jcenter()
     }
+      subprojects {
+        afterEvaluate { project ->
+            if (project.hasProperty('android')) {
+                project.android {
+                    if (namespace == null) {
+                        namespace "com.app.scheme"
+                    }
+                }
+            }
+        }
+    }
 }
 
 apply plugin: 'com.android.library'
